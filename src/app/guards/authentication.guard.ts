@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SpotifyService } from '../services/spotify.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanLoad {
   
-  constructor(private router: Router){}
+  constructor(private router: Router, private spotifySevice: SpotifyService){}
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -22,7 +23,13 @@ export class AuthenticationGuard implements CanLoad {
       if(!token){
         return this.noAuthentication();
       }
-    return true;
+    return new Promise((res) => {
+      const userLogin = this.spotifySevice.initializationUser();
+      if(userLogin)
+      res(true);
+      else
+      res(this.noAuthentication());
+    })
   }
 
   noAuthentication(){
