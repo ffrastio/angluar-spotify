@@ -23,14 +23,19 @@ body {
   background-color: var(--bodyColor);
 }
 
+p {
+  color: #fff
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
 
-.flex{
+.flex {
   display: flex;
-  &-center{
+
+  &-center {
     justify-content: center;
     align-items: center;
   }

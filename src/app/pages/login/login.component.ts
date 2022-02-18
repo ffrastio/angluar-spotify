@@ -6,9 +6,10 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {  
 
-  constructor(private spotifyService: SpotifyService) { }
+  constructor(private spotifyService: SpotifyService) { 
+  }
 
   ngOnInit(): void {
     this.verificationToken();
@@ -17,10 +18,14 @@ export class LoginComponent implements OnInit {
   verificationToken(){
     const token = this.spotifyService.tokenUrlCallback();
 
-    console.log(token);
+    if (!!token) {
+      this.spotifyService.AccessToken(token);
+    }
   }
 
   Login(){
    window.location.href =  this.spotifyService.loginURL();
   }
+
+  
 }

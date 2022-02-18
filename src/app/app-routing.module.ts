@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: ()=> import('./pages/login/login.module').then(x => x.LoginModule)
+  },
+  {
+    path:'playlist',
+    loadChildren: ()=>import('./pages/playlist/playlist.module').then(mod=>mod.PlaylistModule),
+    canLoad:[AuthenticationGuard]
   }
 ];
 
