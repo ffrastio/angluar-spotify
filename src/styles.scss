@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors  */
+  --bodyColor: #222534;
+  --sidebarColor: #1F1E2E;
+  --spotifyColor: #1ED760;
+  --primaryColorLight: #9cf1262c;
+  --toggleColor: #ddd;
+  --textColor: #707070;
+
+  /* Transition */
+  --transition-02: all 0.2s ease;
+  --transition-03: all 0.3s ease;
+  --transition-04: all 0.4s ease;
+  --transition-05: all 0.5s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bodyColor);
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.flex{
+  display: flex;
+  &-center{
+    justify-content: center;
+    align-items: center;
+  }
+}
