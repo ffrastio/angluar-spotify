@@ -46,4 +46,8 @@ p {
   display: block;
   font-weight: 700;
   font-size: 24px;
+  &-black{
+    @extend .title;
+    color: var(--bodyColor)
+  }
 }

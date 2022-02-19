@@ -7,6 +7,7 @@ import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from 'src/app/components/user/user.component';
 import { HomeComponent } from '../home/home.component';
+import { TopArtistComponent } from 'src/app/components/top-artist/top-artist.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     SidebarComponent,
     MenuComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    TopArtistComponent
   ],
   imports: [
     CommonModule,
