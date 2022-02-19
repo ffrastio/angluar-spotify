@@ -7,8 +7,8 @@
   --sidebarColor: #1F1E2E;
   --spotifyColor: #1ED760;
   --primaryColorLight: #9cf1262c;
-  --toggleColor: #ddd;
-  --textColor: #707070;
+  --toggleColor: #707070;
+  --textColor: rgb(226, 226, 226);
 
   /* Transition */
   --transition-02: all 0.2s ease;
@@ -39,4 +39,11 @@ p {
     justify-content: center;
     align-items: center;
   }
+}
+
+.title {
+  color: var(--textColor);
+  display: block;
+  font-weight: 700;
+  font-size: 24px;
 }

@@ -6,13 +6,17 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from 'src/app/components/user/user.component';
+import { HomeComponent } from '../home/home.component';
 
 const routes: Routes = [
   {
     path:'',
     component: PlaylistComponent,
     children:[
-
+      {
+        path: 'home',
+        component: HomeComponent,
+      }
     ]
   }
 ]
@@ -22,7 +26,8 @@ const routes: Routes = [
     PlaylistComponent,
     SidebarComponent,
     MenuComponent,
-    UserComponent
+    UserComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

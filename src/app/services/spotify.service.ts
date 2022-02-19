@@ -67,7 +67,7 @@ export class SpotifyService {
   }
 
   async GetPlaylistUser(offset = 0, limit = 50): Promise<IPlaylist[]>{
-    const playlists = await this.spotifyApi.getUserPlaylists(this.user.id, { offset, limit }); //this.user.id, { offset, limit }
+    const playlists = await this.spotifyApi.getUserPlaylists(); //this.user.id, { offset, limit }
     return playlists.items.map(SpotifyPlaylistParams);
   }
 
