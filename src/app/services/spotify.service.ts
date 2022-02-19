@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class SpotifyService {
   
+
   spotifyApi: Spotify.SpotifyWebApiJs;
   user: IUser;
 
   constructor(private router: Router) {
     this.spotifyApi = new Spotify();
+
    }
 
    async initializationUser(){
@@ -39,8 +41,10 @@ export class SpotifyService {
     }
 
   async spotifyUser(){
-    const userInfo = await this.spotifyApi.getMe();
+    localStorage.setItem('user', JSON.stringify(await this.spotifyApi.getMe()) );
+    const userInfo = JSON.parse(localStorage.getItem('user'));
     this.user = SpotifyUserParams(userInfo);
+    console.log(this.user)
   }
 
   loginURL(){
@@ -61,15 +65,20 @@ export class SpotifyService {
     
   }
 
-  AccessToken(token:string){
+  async AccessToken(token:string){
+    
     this.spotifyApi.setAccessToken(token);
     localStorage.setItem('token', token);
   }
 
-  async GetPlaylistUser(offset = 0, limit = 50): Promise<IPlaylist[]>{
-    const playlists = await this.spotifyApi.getUserPlaylists(); //this.user.id, { offset, limit }
+
+  async buscarPlaylistUser(offset = 0, limit = 50): Promise<IPlaylist[]>{
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+    this.user = SpotifyUserParams(userInfo);
+    const playlists = await this.spotifyApi.getUserPlaylists(this.user.id, {offset,limit});
+    console.log(playlists)
     return playlists.items.map(SpotifyPlaylistParams);
-  }
+  } 
 
   logout(){
     localStorage.clear();

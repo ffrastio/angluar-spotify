@@ -25,8 +25,9 @@ export class SidebarComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
-    this.PlayList();
+  ngOnInit() {
+    this.buscarPlaylists();
+
   }
 
   menuClick(active: string){
@@ -34,8 +35,8 @@ export class SidebarComponent implements OnInit {
     this.router.navigateByUrl('playlist/home')
   }
 
-  async PlayList(){
-    this.playlists = await this.spotifyService.GetPlaylistUser();
+  async buscarPlaylists(){
+    this.playlists = await this.spotifyService.buscarPlaylistUser();
     console.log(this.playlists)
   }
 }
