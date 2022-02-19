@@ -1,0 +1,61 @@
+:host {
+  max-width: 300px;
+  min-height: 100vh;
+  overflow-y: hidden;
+  background-color: #1F1E2E;
+  display: flex;
+  flex-direction: column;
+
+  .menu {
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px 40px;
+
+    .image-container {
+      min-height: 120px;
+
+      img {
+        width: 200px;
+      }
+    }
+
+    .menu-items {
+      width: 100%;
+
+      &.flex {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &.item {
+        min-height: 150px;
+        margin-bottom: 10px;
+      }
+
+      .playlist {
+        margin-bottom: 15px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .playlist-scroll{
+          width: 100%;
+          max-height: 50vh;
+          overflow-y: auto;
+          margin-bottom: 10px;
+      }
+    }
+  }
+
+  .user-menu{
+    flex-grow: 0;
+    display: block;
+    bottom: 0;
+    align-self: flex-start;
+    height: 70px;
+    width: 100%;
+    color: #fff;
+  }
+}

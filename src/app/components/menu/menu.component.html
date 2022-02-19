@@ -1,0 +1,6 @@
+<button type="button" 
+  [class.active]="active"
+  (click)="onClick()">
+  <ng-content></ng-content>
+  <span>{{ describe }}</span>
+</button>

@@ -1,0 +1,40 @@
+<div class="flex menu">
+  <div class="flex flex-center image-container">
+    <img src="assets/images/logo.png" alt="Duds Music" />
+  </div>
+  <div class="flex menu-items item">
+    <app-menu
+      [describe]="'Home'"
+      [active]="menuActive === 'Home'"
+      (click)="menuClick('Home')"
+    >
+      <fa-icon [icon]="homeIcon"></fa-icon>
+    </app-menu>
+    <app-menu
+      [describe]="'Albums'"
+      [active]="menuActive === 'Albums'"
+      (click)="menuClick('Albums')"
+    >
+      <fa-icon [icon]="albumIcon"></fa-icon>
+    </app-menu>
+    <app-menu
+      [describe]="'Artists'"
+      [active]="menuActive === 'Artists'"
+      (click)="menuClick('Artists')"
+    >
+      <fa-icon [icon]="artistIcon"></fa-icon>
+    </app-menu>
+  </div>
+  <div class="menu-items flex">
+      <span class="playlist">Playlist</span>
+
+      <div class="playlist-scroll">
+          <app-menu *ngFor="let item of playlists" [describe]="item.name" [active]="menuActive === item.id" (click)="menuClick(item.id)">
+              <fa-icon [icon]="playlistIcon"></fa-icon>
+          </app-menu>
+      </div>
+  </div>
+</div>
+<div class="user-menu">
+  <app-user></app-user>
+</div>

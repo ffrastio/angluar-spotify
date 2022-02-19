@@ -4,6 +4,11 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'playlist'
+  },
+  {
     path: 'login',
     loadChildren: ()=> import('./pages/login/login.module').then(x => x.LoginModule)
   },
