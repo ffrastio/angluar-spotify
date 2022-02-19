@@ -20,7 +20,7 @@ export const SpotifyConfiguration= {
     "playlist-read-private", 
     "playlist-read-collaborative"
   ]
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

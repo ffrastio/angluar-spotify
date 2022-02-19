@@ -4,11 +4,23 @@ div {
   align-items: center;
   width: 100%;
   height: 100%;
+  border-top: 1px solid #fff;
 
   img {
     flex-grow: 0;
     width: 40px;
     height: auto;
     border-radius: 50%;
+  }
+
+  span{
+    flex-grow: 1;
+    margin-left: 20px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .icon {
+    flex-grow: 0;
+    cursor: pointer;
   }
 }

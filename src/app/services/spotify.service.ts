@@ -4,6 +4,7 @@ import Spotify from 'spotify-web-api-js';
 import { IUser } from '../interfaces/IUser';
 import { SpotifyPlaylistParams, SpotifyUserParams } from '../Common/spotifyHelpers';
 import { IPlaylist } from '../interfaces/IPlaylist';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class SpotifyService {
   spotifyApi: Spotify.SpotifyWebApiJs;
   user: IUser;
 
-  constructor() {
+  constructor(private router: Router) {
     this.spotifyApi = new Spotify();
    }
 
@@ -43,12 +44,12 @@ export class SpotifyService {
   }
 
   loginURL(){
-    const loginEndPoint = `${SpotifyConfiguration.authEndpoint}?`;
+    const authEndpoint = `${SpotifyConfiguration.authEndpoint}?`;
     const clientId =`client_id=${SpotifyConfiguration.clientId}&`;
     const redirectUrl = `redirect_uri=${SpotifyConfiguration.redirectUrl}&`;
     const scopes = `scopes=${SpotifyConfiguration.scopes.join('20%')}&`;
     const responseType = `response_type=token&show_dialog=true`;
-    return loginEndPoint + clientId + redirectUrl + scopes + responseType;
+    return authEndpoint + clientId + redirectUrl + scopes + responseType;
   }
 
   tokenUrlCallback(){
@@ -66,7 +67,12 @@ export class SpotifyService {
   }
 
   async GetPlaylistUser(offset = 0, limit = 50): Promise<IPlaylist[]>{
-    const playlists = await this.spotifyApi.getUserPlaylists(); //this.user.id, { offset, limit }
+    const playlists = await this.spotifyApi.getUserPlaylists(this.user.id, { offset, limit }); //this.user.id, { offset, limit }
     return playlists.items.map(SpotifyPlaylistParams);
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

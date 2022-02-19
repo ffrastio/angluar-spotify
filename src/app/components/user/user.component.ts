@@ -10,7 +10,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class UserComponent implements OnInit {
 
   //icon
-  logout = faSignOut;
+  signOut = faSignOut;
 
   user: IUser = null;
   constructor(
@@ -21,4 +21,7 @@ export class UserComponent implements OnInit {
     this.user = this.spotifyService.user;
   }
 
+  logout(){
+    this.spotifyService.logout();
+  }
 }
