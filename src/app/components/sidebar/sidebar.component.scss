@@ -1,10 +1,80 @@
+// :host {
+//   max-width: 300px;
+//   min-height: 100vh;
+//   overflow-y: hidden;
+//   background-color: #1F1E2E;
+//   display: flex;
+//   flex-direction: column;
+
+//   .menu {
+//     flex-grow: 1;
+//     flex-direction: column;
+//     height: 100%;
+//     padding: 0px 40px 0px 40px;
+
+//     .image-container {
+//       min-height: 120px;
+
+//       img {
+//         width: 200px;
+//       }
+//     }
+
+//     .menu-items {
+//       width: 100%;
+
+//       &.flex {
+//         flex-direction: column;
+//         justify-content: flex-start;
+//         align-items: center;
+//       }
+
+//       &.item {
+//         min-height: 150px;
+//         margin-bottom: 10px;
+//       }
+
+//       .playlist {
+//         margin-bottom: 15px;
+//         font-weight: 700;
+//         color: #fff;
+//       }
+
+//       .playlist-scroll{
+//           width: 100%;
+//           max-height: 50vh;
+//           overflow-y: auto;
+//           margin-bottom: 10px;
+//       }
+//     }
+//   }
+
+//   .user-menu{
+//     flex-grow: 0;
+//     display: block;
+//     bottom: 0;
+//     align-self: flex-start;
+//     height: 70px;
+//     width: 100%;
+//     color: #fff;
+//   }
+// }
+
+$h-spotify-logo: 120px;
+$h-menu-opcoes: 150px;
+$m-entre-menus: 10px;
+$h-footer-user: 70px;
+
+$h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
+
 :host {
   max-width: 300px;
   min-height: 100vh;
   overflow-y: hidden;
-  background-color: #1F1E2E;
   display: flex;
   flex-direction: column;
+  background-color: #1F1E2E;
+  box-shadow: 1px 0px 15px #00000012;
 
   .menu {
     flex-grow: 1;
@@ -13,14 +83,14 @@
     padding: 0px 40px 0px 40px;
 
     .image-container {
-      min-height: 120px;
+      min-height: $h-spotify-logo;
 
       img {
-        width: 200px;
+        width: 70%;
       }
     }
 
-    .menu-items {
+    .menu-container {
       width: 100%;
 
       &.flex {
@@ -30,31 +100,43 @@
       }
 
       &.item {
-        min-height: 150px;
-        margin-bottom: 10px;
+        min-height: $h-menu-opcoes;
+
+        * {
+          margin-bottom: $m-entre-menus;
+        }
       }
 
       .playlist {
-        margin-bottom: 15px;
+        margin: 10px 0px;
+        align-self: flex-start;
         font-weight: 700;
+        font-size: .7rem;
         color: #fff;
       }
 
-      .playlist-scroll{
-          width: 100%;
-          max-height: 50vh;
-          overflow-y: auto;
-          margin-bottom: 10px;
+      .playlist-scroll {
+        width: 100%;
+        max-height: calc(95vh - $h-desconsiderar);
+        overflow-y: auto;
+
+        &::-webkit-scrollbar{
+          display: none;
+        }
+
+        * {
+          margin-bottom: $m-entre-menus;
+        }
       }
     }
   }
 
-  .user-menu{
+  .user-menu {
     flex-grow: 0;
     display: block;
     bottom: 0;
-    align-self: flex-start;
-    height: 70px;
+    align-self: flex-end;
+    height: $h-footer-user;
     width: 100%;
     color: #fff;
   }
