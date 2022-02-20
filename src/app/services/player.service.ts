@@ -26,10 +26,18 @@ export class PlayerService {
     // change music
     this.timerId = setInterval(async () => {
       await this.getMusicPlaying();
-    }, 3000)
+    }, 5000)
   }
 
   defMusicPlaying(music: IMusic){
     this.musicPlaying.next(music);
+  }
+
+  async prevMusic(){
+    await this.spotifyService.prevMusic();
+  }
+
+  async forwMusic(){
+    await this.spotifyService.forwMusic();
   }
 }

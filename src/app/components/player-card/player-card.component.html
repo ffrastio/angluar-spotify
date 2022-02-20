@@ -1,1 +1,19 @@
-<p>player-card works!</p>
+<div class="container card p-10">
+    <div class="image" [style.background-image]="'url(' + music.album.imageUrl + ')'" ></div>
+<div class="controles">
+    <span> {{music.title }} </span>
+    <div class="botoes">
+      <fa-icon 
+        [icon]="prevIcon" 
+        (click)="prevMusic()"
+        >
+      </fa-icon>
+      
+      <fa-icon 
+        [icon]="forwIcon"
+        (click)="forwMusic()"
+        >
+      </fa-icon>
+    </div>
+  </div>
+</div>
